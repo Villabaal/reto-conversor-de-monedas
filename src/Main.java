@@ -7,7 +7,7 @@ import java.io.IOException;
 
 
 public class Main {
-    private static final Menu menu = new Menu("usd","mxn","eur");
+    private static final Menu menu = new Menu("usd","mxn","eur","cny","jpy");
 
     public static void main(String[] args) {
         try {

@@ -1,7 +1,9 @@
 package com.aluracursos.forex.modelos;
 
 import javax.naming.directory.InvalidAttributeValueException;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class Menu {
@@ -14,15 +16,24 @@ public class Menu {
             divisaBase[i] = new Divisa(tickers[i]);
         }
     }
-    public void imprimirMenu(){
+    private void imprimirMenu(){
         System.out.println("******************************************************************************************");
         System.out.println("Selecciona el número para elegir la divisa base desde la cual convertir:");
         for (int i = 0; i < divisaBase.length; i++) {
             var cadena = (i+1)+".- "+divisaBase[i];
             System.out.println(cadena);
         }
+        System.out.println( (divisaBase.length+1)+".- salir" );
         System.out.println("******************************************************************************************");
     }
+
+    private void guardarEnHistorial(String mensaje) throws IOException {
+        LocalDateTime locaDate = LocalDateTime.now();
+        FileWriter escritura = new FileWriter("historial.txt",true);
+        escritura.write( locaDate+": "+mensaje+"\n" );
+        escritura.close();
+    }
+
     public void loop() throws InvalidAttributeValueException,
             NumberFormatException, IOException, InterruptedException {
         imprimirMenu();
@@ -40,6 +51,7 @@ public class Menu {
             double cantidadConvertida = divisa.convertirA(cantidad,ticker);
             String cadenaDeSalida = "%.2f %s = %.2f %s"
                     .formatted(cantidad,divisa.toString(),cantidadConvertida,ticker);
+            guardarEnHistorial(cadenaDeSalida);
             System.out.println("\n"+cadenaDeSalida);
             System.out.println("Presiona Enter para seguir");
             lectura.nextLine();
