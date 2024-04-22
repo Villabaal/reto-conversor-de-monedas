@@ -11,7 +11,7 @@ import java.net.http.HttpResponse;
 
 public class Divisa {
     private String direccion = "https://v6.exchangerate-api.com/v6/255a07d9d43c48593fd34846/latest/";
-    private String ticker;
+    private final String ticker;
     private final JsonParser parser = new JsonParser();
     private final HttpClient client = HttpClient.newHttpClient();
 
@@ -20,8 +20,7 @@ public class Divisa {
         this.ticker = ticker.toUpperCase();
     }
 
-    public double convertirA(double cantidad,String ticker) throws SecurityException,
-                            IOException,InterruptedException,IllegalArgumentException,NullPointerException {
+    private  JsonObject  getCoeficienteDeConversion() throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(direccion))
                 .build();
@@ -29,11 +28,16 @@ public class Divisa {
                 .send(request, HttpResponse.BodyHandlers.ofString());
         String json = response.body();
         JsonObject mapaDeRespuesta = parser.parse(json).getAsJsonObject();
-        JsonObject coeficienteDeConversion = mapaDeRespuesta.get("conversion_rates").getAsJsonObject();
-        if (coeficienteDeConversion.get(ticker) == null) {
+        return mapaDeRespuesta.get("conversion_rates").getAsJsonObject();
+    }
+
+    public double convertirA(double cantidad,Divisa divisa) throws SecurityException,
+                            IOException,InterruptedException,IllegalArgumentException,NullPointerException {
+        JsonObject coeficienteDeConversion = getCoeficienteDeConversion();
+        if (coeficienteDeConversion.get(divisa.toString()) == null) {
             throw new IllegalArgumentException("Ticker no válido");
         }
-        return  coeficienteDeConversion.get(ticker).getAsDouble()*cantidad;
+        return  coeficienteDeConversion.get(divisa.toString()).getAsDouble()*cantidad;
     }
 
     @Override
