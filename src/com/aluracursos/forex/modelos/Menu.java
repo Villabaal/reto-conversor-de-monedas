@@ -58,6 +58,5 @@ public class Menu {
         System.out.println("\n"+cadenaDeSalida);
         System.out.println("Presiona Enter para seguir");
         lectura.nextLine();
-        imprimirMenu();
     }
 }

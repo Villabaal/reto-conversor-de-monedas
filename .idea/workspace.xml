@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="18bf733d-7681-4d4d-a424-46bda630ee24" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/aluracursos/forex/Excepciones/Salir.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/aluracursos/forex/modelos/Logger.java" afterDir="false" />
+    <list default="true" id="18bf733d-7681-4d4d-a424-46bda630ee24" name="Changes" comment="se agrego el Logger y se sale del menú mediante una exception">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/historial.txt" beforeDir="false" afterPath="$PROJECT_DIR$/historial.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/aluracursos/forex/modelos/Divisa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/aluracursos/forex/modelos/Divisa.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/aluracursos/forex/modelos/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/aluracursos/forex/modelos/Menu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -103,5 +98,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="se agrego el Logger y se sale del menú mediante una exception" />
+    <option name="LAST_COMMIT_MESSAGE" value="se agrego el Logger y se sale del menú mediante una exception" />
   </component>
 </project>
